@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Caroline Aurellia | Space Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+/* ========================= */
+/* GLOBAL */
+/* ========================= */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+}
+
+body{
+font-family:'Poppins',sans-serif;
+background:#050816;
+color:white;
+overflow-x:hidden;
+}
+
+/* STAR BACKGROUND */
+
+canvas{
+position:fixed;
+top:0;
+left:0;
+z-index:-1;
+}
+
+/* NAVBAR */
+
+nav{
+position:fixed;
+top:0;
+width:100%;
+background:rgba(0,0,0,0.6);
+backdrop-filter:blur(10px);
+display:flex;
+justify-content:center;
+padding:15px;
+z-index:1000;
+}
+
+nav a{
+color:white;
+margin:0 15px;
+text-decoration:none;
+font-weight:500;
+transition:0.3s;
+}
+
+nav a:hover{
+color:#00e0ff;
+text-shadow:0 0 10px #00e0ff;
+}
+
+/* SECTION */
+
+section{
+min-height:100vh;
+padding:120px 10%;
+}
+
+/* HOME */
+
+#home{
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+}
+
+#home h1{
+font-family:'Orbitron',sans-serif;
+font-size:60px;
+color:#00e0ff;
+text-shadow:0 0 20px #00e0ff;
+}
+
+#home p{
+margin-top:20px;
+font-size:20px;
+max-width:600px;
+}
+
+.glow-btn{
+margin-top:30px;
+padding:15px 40px;
+border:none;
+background:#00e0ff;
+color:#000;
+font-weight:bold;
+border-radius:30px;
+cursor:pointer;
+transition:0.4s;
+}
+
+.glow-btn:hover{
+box-shadow:0 0 20px #00e0ff,0 0 40px #00e0ff;
+transform:scale(1.1);
+}
+
+/* ABOUT */
+
+.about-container{
+display:flex;
+gap:50px;
+align-items:center;
+flex-wrap:wrap;
+}
+
+.about-container img{
+width:300px;
+border-radius:20px;
+box-shadow:0 0 20px #00e0ff;
+}
+
+/* IMAGE SLIDER */
+
+.slider{
+margin-top:40px;
+display:flex;
+overflow:hidden;
+gap:20px;
+}
+
+.slider img{
+width:250px;
+border-radius:15px;
+animation:slide 15s linear infinite;
+}
+
+@keyframes slide{
+0%{transform:translateX(0);}
+100%{transform:translateX(-100%);}
+}
+
+/* CARDS */
+
+.card{
+background:rgba(255,255,255,0.05);
+padding: 25px;
+border-radius:20px;
+margin-bottom:30px;
+transition:0.4s;
+backdrop-filter:blur(10px);
+}
+
+.card:hover{
+transform:translateY(-10px);
+box-shadow:0 0 20px #00e0ff;
+}
+
+.card img{
+width:40%;
+border-radius:15px;
+margin-bottom:20px;
+}
+
+/* SKILL */
+
+.skill-bar{
+margin-bottom:20px;
+}
+
+.skill-bar span{
+font-size:14px;
+}
+
+.bar{
+height:10px;
+background:#333;
+border-radius:10px;
+overflow:hidden;
+margin-top:5px;
+}
+
+.progress{
+height:100%;
+background:#00e0ff;
+width:0;
+transition:1s;
+}
+
+/* CERTIFICATE */
+
+.cert-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
+}
+
+.cert-grid img{
+width:100%;
+border-radius:15px;
+box-shadow:0 0 20px #00e0ff;
+}
+
+/* CONTACT */
+
+.contact-box{
+background:rgba(255,255,255,0.05);
+padding:40px;
+border-radius:20px;
+text-align:center;
+backdrop-filter:blur(10px);
+}
+
+.contact-box a{
+display:block;
+margin:10px 0;
+color:#00e0ff;
+text-decoration:none;
+font-size:18px;
+}
+
+/* FADE IN */
+
+.fade{
+opacity:0;
+transform:translateY(50px);
+transition:1s;
+}
+
+.fade.show{
+opacity:1;
+transform:translateY(0);
+}
+
+</style>
+</head>
+<body>
+
+<canvas id="stars"></canvas>
+
+<nav>
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#education">Education</a>
+<a href="#experience">Experience</a>
+<a href="#project">Project</a>
+<a href="#skill">Skill</a>
+<a href="#certificate">Certificate</a>
+<a href="#contact">Contact</a>
+</nav>
+
+<!-- HOME -->
+<section id="home">
+<h1>CAROLINE AURELLIA</h1>
+<p>Creative Student | Future Tech Leader | Problem Solver</p>
+<button class="glow-btn" onclick="scrollToSection('about')">Explore My Space</button>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="fade">
+<h2>About Me</h2>
+<div class="about-container">
+<img src="foto.jpeg">
+<p>Saya mahasiswa yang aktif, kreatif, dan berpengalaman dalam organisasi, kepanitiaan, serta kompetisi nasional. Saya memiliki passion di bidang teknologi dan kepemimpinan.</p>
+</div>
+
+<div class="slider">
+<img src="juara (2).jpeg">
+<img src="juara (4).jpeg">
+<img src="karakteristik.jpeg">
+<img src="ba.jpeg">
+<img src="paskib.jpeg">
+</div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education" class="fade">
+<h2>Education</h2>
+<div class="card">
+<h3>Universitas Dian Nuswantoro</h3>
+<p>Mahasiswa Semester 2</p>
+</div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="fade">
+<h2>Experience</h2>
+
+<div class="card">
+<img src="image.png">
+<h3>Brand Ambassador Piala by.U 2025</h3>
+<p>Menjadi wajah promosi event olah raga  Piala by.U di Semarang dan tampil dalam media promosi resmi.</p>
+</div>
+
+<div class="card">
+<img src="image copy.png">
+<h3>Panitia Hackathon</h3>
+<p>Bertanggung jawab dalam koordinasi peserta dan teknis acara kompetisi teknologi.</p>
+</div>
+
+<div class="card">
+<img src="image copy 2.png">
+<h3>Anggota OSIS</h3>
+<p>Aktif dalam organisasi sekolah dan membantu pelaksanaan berbagai event besar.</p>
+</div>
+
+</section>
+
+<!-- PROJECT -->
+<section id="project" class="fade">
+<h2>Projects</h2>
+
+<div class="card">
+<img src="image copy 3.png">
+<h3>Business Plan Competition</h3>
+<p>Juara 2 Nasional dalam lomba Business Plan.</p>
+</div>
+
+<div class="card">
+<img src="image copy 4.png">
+<h3>Creative Marketing Video</h3>
+<p>Juara 2 lomba video kreatif pemasaran tingkat nasional.</p>
+</div>
+
+</section>
+
+<!-- SKILL -->
+<section id="skill" class="fade">
+<h2>Skills</h2>
+
+<div class="skill-bar">
+<span>Leadership</span>
+<div class="bar"><div class="progress" style="width:90%"></div></div>
+</div>
+
+<div class="skill-bar">
+<span>Public Speaking</span>
+<div class="bar"><div class="progress" style="width:85%"></div></div>
+</div>
+
+<div class="skill-bar">
+<span>Event Management</span>
+<div class="bar"><div class="progress" style="width:80%"></div></div>
+</div>
+
+<div class="skill-bar">
+<span>Creative Thinking</span>
+<div class="bar"><div class="progress" style="width:88%"></div></div>
+</div>
+
+<div class="skill-bar">
+<span>Teamwork</span>
+<div class="bar"><div class="progress" style="width:92%"></div></div>
+</div>
+
+</section>
+
+<!-- CERTIFICATE -->
+<section id="certificate" class="fade">
+<h2>Certificates</h2>
+
+<div class="cert-grid">
+<img src="image copy 5.png">
+<img src="image copy 6.png">
+<img src="22939cb4-87bd-4752-bef8-5ef0a89107df.jpg">
+<img src="50018de5-0e9d-4b3f-b645-69afc1403317.jpg">
+</div>
+
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="fade">
+<h2>Contact Me</h2>
+
+<div class="contact-box">
+<a href="#">Instagram: @crl.28_</a>
+<a href="#">LinkedIn: https://id.linkedin.com/in/caroline-aurellia-994909368</a>
+<a href="#">Email: alinvalencia123@gmail.com</a>
+</div>
+
+</section>
+
+<script>
+
+/* STAR ANIMATION */
+
+const canvas=document.getElementById("stars");
+const ctx=canvas.getContext("2d");
+
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+let stars=[];
+
+for(let i=0;i<200;i++){
+stars.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+r:Math.random()*2,
+d:Math.random()*1
+});
+}
+
+function drawStars(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+ctx.fillStyle="white";
+ctx.beginPath();
+for(let i=0;i<stars.length;i++){
+let s=stars[i];
+ctx.moveTo(s.x,s.y);
+ctx.arc(s.x,s.y,s.r,0,Math.PI*2,true);
+}
+ctx.fill();
+update();
+}
+
+function update(){
+for(let i=0;i<stars.length;i++){
+let s=stars[i];
+s.y+=s.d;
+if(s.y>canvas.height){
+s.y=0;
+}
+}
+}
+
+setInterval(drawStars,33);
+
+/* FADE IN */
+
+const faders=document.querySelectorAll('.fade');
+window.addEventListener('scroll',()=>{
+faders.forEach(el=>{
+const top=el.getBoundingClientRect().top;
+if(top<window.innerHeight-100){
+el.classList.add('show');
+}
+});
+});
+
+/* SCROLL BUTTON */
+
+function scrollToSection(id){
+document.getElementById(id).scrollIntoView({behavior:'smooth'});
+}
+
+</script>
+
+</body>
+</html>
