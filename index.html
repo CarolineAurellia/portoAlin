@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -5,450 +6,786 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Caroline Aurellia | Space Portfolio</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-
-/* ========================= */
 /* GLOBAL */
-/* ========================= */
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-scroll-behavior:smooth;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
-body{
-font-family:'Poppins',sans-serif;
-background:#050816;
-color:white;
-overflow-x:hidden;
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #050816;
+    color: white;
+    overflow-x: hidden;
+    line-height: 1.7;
 }
 
-/* STAR BACKGROUND */
+canvas {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+}
 
-canvas{
-position:fixed;
-top:0;
-left:0;
-z-index:-1;
+a {
+    color: inherit;
 }
 
 /* NAVBAR */
-
-nav{
-position:fixed;
-top:0;
-width:100%;
-background:rgba(0,0,0,0.6);
-backdrop-filter:blur(10px);
-display:flex;
-justify-content:center;
-padding:15px;
-z-index:1000;
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(12px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 14px 10px;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(0, 224, 255, 0.15);
 }
 
-nav a{
-color:white;
-margin:0 15px;
-text-decoration:none;
-font-weight:500;
-transition:0.3s;
+nav a {
+    color: white;
+    padding: 6px 10px;
+    text-decoration: none;
+    font-size: 13px;
+    transition: 0.3s;
 }
 
-nav a:hover{
-color:#00e0ff;
-text-shadow:0 0 10px #00e0ff;
+nav a:hover {
+    color: #00e0ff;
+    text-shadow: 0 0 10px #00e0ff;
 }
 
 /* SECTION */
+section {
+    min-height: 100vh;
+    padding: 120px 10% 80px;
+    scroll-margin-top: 50px;
+}
 
-section{
-min-height:100vh;
-padding:120px 10%;
+.section-title {
+    font-family: 'Orbitron', sans-serif;
+    color: #00e0ff;
+    font-size: 32px;
+    text-align: center;
+    margin-bottom: 40px;
+    text-shadow: 0 0 12px rgba(0, 224, 255, 0.4);
 }
 
 /* HOME */
-
-#home{
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
+#home {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
-#home h1{
-font-family:'Orbitron',sans-serif;
-font-size:60px;
-color:#00e0ff;
-text-shadow:0 0 20px #00e0ff;
+#home h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(32px, 6vw, 60px);
+    color: #00e0ff;
+    text-shadow: 0 0 20px #00e0ff;
+    line-height: 1.3;
 }
 
-#home p{
-margin-top:20px;
-font-size:20px;
-max-width:600px;
+#home p {
+    margin-top: 20px;
+    font-size: clamp(15px, 2vw, 20px);
+    max-width: 650px;
+    color: #d4e7ff;
 }
 
-.glow-btn{
-margin-top:30px;
-padding:15px 40px;
-border:none;
-background:#00e0ff;
-color:#000;
-font-weight:bold;
-border-radius:30px;
-cursor:pointer;
-transition:0.4s;
+.home-tag {
+    color: #00e0ff;
+    border: 1px solid rgba(0, 224, 255, 0.5);
+    padding: 7px 18px;
+    border-radius: 30px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    margin-bottom: 22px;
 }
 
-.glow-btn:hover{
-box-shadow:0 0 20px #00e0ff,0 0 40px #00e0ff;
-transform:scale(1.1);
+.glow-btn {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 13px 32px;
+    border: none;
+    background: #00e0ff;
+    color: #000;
+    font-weight: 700;
+    border-radius: 30px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.glow-btn:hover {
+    box-shadow: 0 0 20px #00e0ff, 0 0 40px #00e0ff;
+    transform: translateY(-3px);
 }
 
 /* ABOUT */
-
-.about-container{
-display:flex;
-gap:50px;
-align-items:center;
-flex-wrap:wrap;
+.about-container {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
-.about-container img{
-width:300px;
-border-radius:20px;
-box-shadow:0 0 20px #00e0ff;
+.about-container img {
+    width: 250px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 20px;
+    border: 2px solid #00e0ff;
+    box-shadow: 0 0 20px rgba(0, 224, 255, 0.35);
+}
+
+.about-text {
+    flex: 1;
+    min-width: 250px;
+    max-width: 650px;
+}
+
+.about-text h3 {
+    font-size: 25px;
+    margin-bottom: 15px;
+    color: #00e0ff;
+}
+
+.about-text p {
+    color: #d1d5e5;
+    margin-bottom: 15px;
 }
 
 /* IMAGE SLIDER */
-
-.slider{
-margin-top:40px;
-display:flex;
-overflow:hidden;
-gap:20px;
+.slider {
+    margin-top: 45px;
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding: 15px 5px 25px;
+    scrollbar-color: #00e0ff #10172d;
 }
 
-.slider img{
-width:250px;
-border-radius:15px;
-animation:slide 15s linear infinite;
+.slider img {
+    flex: 0 0 230px;
+    width: 230px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 15px;
+    border: 1px solid rgba(0, 224, 255, 0.4);
+    transition: 0.3s;
 }
 
-@keyframes slide{
-0%{transform:translateX(0);}
-100%{transform:translateX(-100%);}
+.slider img:hover {
+    transform: scale(1.04);
+    box-shadow: 0 0 18px rgba(0, 224, 255, 0.5);
 }
 
 /* CARDS */
-
-.card{
-background:rgba(255,255,255,0.05);
-padding: 25px;
-border-radius:20px;
-margin-bottom:30px;
-transition:0.4s;
-backdrop-filter:blur(10px);
+.card {
+    background: rgba(255, 255, 255, 0.055);
+    border: 1px solid rgba(0, 224, 255, 0.17);
+    padding: 25px;
+    border-radius: 20px;
+    margin-bottom: 25px;
+    transition: 0.35s;
+    backdrop-filter: blur(10px);
 }
 
-.card:hover{
-transform:translateY(-10px);
-box-shadow:0 0 20px #00e0ff;
+.card:hover {
+    transform: translateY(-6px);
+    border-color: #00e0ff;
+    box-shadow: 0 0 20px rgba(0, 224, 255, 0.2);
 }
 
-.card img{
-width:40%;
-border-radius:15px;
-margin-bottom:20px;
+.card img {
+    width: 100%;
+    max-width: 360px;
+    max-height: 240px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 18px;
+    display: block;
 }
 
-/* SKILL */
-
-.skill-bar{
-margin-bottom:20px;
+.card h3 {
+    font-size: 21px;
+    color: #00e0ff;
+    margin-bottom: 10px;
 }
 
-.skill-bar span{
-font-size:14px;
+.card p {
+    color: #d1d5e5;
+    font-size: 14px;
 }
 
-.bar{
-height:10px;
-background:#333;
-border-radius:10px;
-overflow:hidden;
-margin-top:5px;
+.card-date {
+    display: inline-block;
+    font-size: 12px;
+    color: #00e0ff;
+    border: 1px solid rgba(0, 224, 255, 0.35);
+    border-radius: 20px;
+    padding: 4px 12px;
+    margin-bottom: 12px;
 }
 
-.progress{
-height:100%;
-background:#00e0ff;
-width:0;
-transition:1s;
+/* EDUCATION */
+.education-card {
+    max-width: 750px;
+    margin: auto;
+    border-left: 3px solid #00e0ff;
 }
 
-/* CERTIFICATE */
-
-.cert-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:30px;
+/* PROJECT GRID */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 25px;
 }
 
-.cert-grid img{
-width:100%;
-border-radius:15px;
-box-shadow:0 0 20px #00e0ff;
+.project-grid .card {
+    margin-bottom: 0;
+}
+
+/* SKILLS */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+}
+
+.skill-bar {
+    margin-bottom: 20px;
+}
+
+.skill-bar span {
+    font-size: 14px;
+}
+
+.bar {
+    height: 9px;
+    background: #252b40;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 7px;
+}
+
+.progress {
+    height: 100%;
+    background: linear-gradient(90deg, #0066ff, #00e0ff);
+    border-radius: 10px;
+}
+
+/* CERTIFICATES */
+.cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+}
+
+.cert-grid img {
+    width: 100%;
+    height: 210px;
+    object-fit: contain;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 10px;
+    border: 1px solid rgba(0, 224, 255, 0.2);
+    border-radius: 15px;
+    transition: 0.3s;
+}
+
+.cert-grid img:hover {
+    box-shadow: 0 0 20px rgba(0, 224, 255, 0.45);
+    transform: scale(1.03);
 }
 
 /* CONTACT */
-
-.contact-box{
-background:rgba(255,255,255,0.05);
-padding:40px;
-border-radius:20px;
-text-align:center;
-backdrop-filter:blur(10px);
+.contact-box {
+    max-width: 700px;
+    margin: auto;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 35px;
+    border-radius: 20px;
+    text-align: center;
+    border: 1px solid rgba(0, 224, 255, 0.2);
 }
 
-.contact-box a{
-display:block;
-margin:10px 0;
-color:#00e0ff;
-text-decoration:none;
-font-size:18px;
+.contact-box p {
+    color: #d1d5e5;
+    margin-bottom: 20px;
+}
+
+.contact-box a {
+    display: block;
+    margin: 14px 0;
+    color: #00e0ff;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+    transition: 0.3s;
+}
+
+.contact-box a:hover {
+    text-shadow: 0 0 10px #00e0ff;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 25px 15px;
+    background: rgba(0, 0, 0, 0.5);
+    color: #9daac3;
+    font-size: 12px;
+    border-top: 1px solid rgba(0, 224, 255, 0.15);
 }
 
 /* FADE IN */
-
-.fade{
-opacity:0;
-transform:translateY(50px);
-transition:1s;
+.fade {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
-.fade.show{
-opacity:1;
-transform:translateY(0);
+.fade.show {
+    opacity: 1;
+    transform: translateY(0);
 }
 
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    nav {
+        gap: 2px;
+        padding: 10px 5px;
+    }
+
+    nav a {
+        font-size: 11px;
+        padding: 5px 7px;
+    }
+
+    section {
+        padding: 110px 6% 65px;
+    }
+
+    .section-title {
+        font-size: 25px;
+    }
+
+    .about-container {
+        gap: 25px;
+    }
+
+    .about-container img {
+        width: 210px;
+        height: 250px;
+    }
+
+    .about-text {
+        text-align: center;
+    }
+
+    .card {
+        padding: 20px;
+    }
+
+    .contact-box {
+        padding: 25px 18px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}
 </style>
 </head>
+
 <body>
 
 <canvas id="stars"></canvas>
 
+<!-- NAVBAR -->
 <nav>
-<a href="#home">Home</a>
-<a href="#about">About</a>
-<a href="#education">Education</a>
-<a href="#experience">Experience</a>
-<a href="#project">Project</a>
-<a href="#skill">Skill</a>
-<a href="#certificate">Certificate</a>
-<a href="#contact">Contact</a>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#education">Education</a>
+    <a href="#experience">Experience</a>
+    <a href="#project">Projects</a>
+    <a href="#skill">Skills</a>
+    <a href="#certificate">Certificates</a>
+    <a href="#contact">Contact</a>
 </nav>
 
 <!-- HOME -->
 <section id="home">
-<h1>CAROLINE AURELLIA</h1>
-<p>Creative Student | Future Tech Leader | Problem Solver</p>
-<button class="glow-btn" onclick="scrollToSection('about')">Explore My Space</button>
+    <div class="home-tag">WELCOME TO MY UNIVERSE</div>
+    <h1>CAROLINE AURELLIA</h1>
+    <p>
+        Creative Student | Future Tech Leader | Brand Ambassador
+        | Technology Enthusiast
+    </p>
+    <a class="glow-btn" href="#about">Explore My Space</a>
 </section>
 
 <!-- ABOUT -->
 <section id="about" class="fade">
-<h2>About Me</h2>
-<div class="about-container">
-<img src="foto.jpeg">
-<p>Saya mahasiswa yang aktif, kreatif, dan berpengalaman dalam organisasi, kepanitiaan, serta kompetisi nasional. Saya memiliki passion di bidang teknologi dan kepemimpinan.</p>
-</div>
+    <h2 class="section-title">About Me</h2>
 
-<div class="slider">
-<img src="juara (2).jpeg">
-<img src="juara (4).jpeg">
-<img src="karakteristik.jpeg">
-<img src="ba.jpeg">
-<img src="paskib.jpeg">
-</div>
+    <div class="about-container">
+        <img src="foto.jpeg" alt="Foto Caroline Aurellia">
+
+        <div class="about-text">
+            <h3>Hello, I'm Caroline!</h3>
+            <p>
+                Saya Caroline Aurellia, mahasiswa semester 2 S1 Teknik
+                Informatika di Universitas Dian Nuswantoro.
+                Saya memiliki ketertarikan pada teknologi, kreativitas,
+                komunikasi, dan pengembangan diri.
+            </p>
+            <p>
+                Saya aktif mengikuti kegiatan organisasi, kompetisi,
+                serta program pengembangan mahasiswa. Melalui berbagai
+                pengalaman tersebut, saya terus mengembangkan kemampuan
+                leadership, public speaking, teamwork, dan creative thinking.
+            </p>
+            <p>
+                Bagi saya, teknologi bukan hanya tentang inovasi,
+                tetapi juga tentang bagaimana kita dapat memberikan
+                dampak positif bagi orang lain.
+            </p>
+        </div>
+    </div>
+
+    <div class="slider">
+        <img src="juara (2).jpeg" alt="Dokumentasi prestasi">
+        <img src="juara (4).jpeg" alt="Dokumentasi kompetisi">
+        <img src="karakteristik.jpeg" alt="Dokumentasi kegiatan">
+        <img src="ba.jpeg" alt="Dokumentasi Brand Ambassador">
+        <img src="paskib.jpeg" alt="Dokumentasi organisasi">
+    </div>
 </section>
 
 <!-- EDUCATION -->
 <section id="education" class="fade">
-<h2>Education</h2>
-<div class="card">
-<h3>Universitas Dian Nuswantoro</h3>
-<p>Mahasiswa Semester 2</p>
-</div>
+    <h2 class="section-title">Education</h2>
+
+    <div class="card education-card">
+        <span class="card-date">2025 – Present</span>
+        <h3>Universitas Dian Nuswantoro</h3>
+        <p>S1 Teknik Informatika — Semester 2</p>
+        <p>
+            Mempelajari dasar-dasar teknologi informasi, pemrograman,
+            logika komputasi, dan pengembangan solusi digital.
+        </p>
+    </div>
 </section>
 
 <!-- EXPERIENCE -->
 <section id="experience" class="fade">
-<h2>Experience</h2>
+    <h2 class="section-title">Experience</h2>
 
-<div class="card">
-<img src="image.png">
-<h3>Brand Ambassador Piala by.U 2025</h3>
-<p>Menjadi wajah promosi event olah raga  Piala by.U di Semarang dan tampil dalam media promosi resmi.</p>
-</div>
+    <div class="card">
+        <img src="image.png" alt="Brand Ambassador Piala by.U">
+        <span class="card-date">2025</span>
+        <h3>Brand Ambassador Piala by.U Semarang</h3>
+        <p>
+            Menjadi Brand Ambassador Piala by.U di Semarang dengan
+            mendukung promosi event olahraga melalui media sosial
+            dan konten kreatif. Pengalaman ini mengembangkan kemampuan
+            komunikasi, personal branding, dan interaksi dengan audiens.
+        </p>
+    </div>
 
-<div class="card">
-<img src="image copy.png">
-<h3>Panitia Hackathon</h3>
-<p>Bertanggung jawab dalam koordinasi peserta dan teknis acara kompetisi teknologi.</p>
-</div>
+    <div class="card">
+        <img src="gsa.jpeg" alt="Google Student Ambassador">
+        <span class="card-date">Google Student Ambassador Program</span>
+        <h3>Google Student Ambassador (GSA)</h3>
+        <p>
+            Terpilih sebagai salah satu Google Student Ambassador dari
+            lebih dari 81.000 pendaftar. Mengikuti program pengembangan
+            mahasiswa yang berfokus pada teknologi, AI, kreativitas,
+            dan kolaborasi. Turut membuat konten serta berbagi wawasan
+            tentang pemanfaatan AI secara bijak dan produktif.
+        </p>
+    </div>
 
-<div class="card">
-<img src="image copy 2.png">
-<h3>Anggota OSIS</h3>
-<p>Aktif dalam organisasi sekolah dan membantu pelaksanaan berbagai event besar.</p>
-</div>
+    <div class="card">
+        <img src="myskill.jpeg" alt="Dokumentasi MySkill">
+        <span class="card-date">Learning & Development</span>
+        <h3>MySkill</h3>
+        <p>
+            Mengembangkan wawasan dan keterampilan melalui kegiatan
+            pembelajaran serta pengembangan diri di MySkill. Pengalaman
+            ini mendukung peningkatan kompetensi profesional,
+            komunikasi, dan kesiapan menghadapi dunia kerja.
+        </p>
+    </div>
 
+    <div class="card">
+        <img src="image copy.png" alt="Panitia Hackathon">
+        <h3>Panitia Hackathon</h3>
+        <p>
+            Berkontribusi dalam koordinasi peserta dan mendukung
+            kelancaran teknis pelaksanaan kompetisi teknologi.
+            Pengalaman ini melatih kerja sama tim, manajemen waktu,
+            dan kemampuan menyelesaikan masalah.
+        </p>
+    </div>
+
+    <div class="card">
+        <img src="image copy 2.png" alt="Anggota OSIS">
+        <h3>Anggota OSIS</h3>
+        <p>
+            Aktif dalam organisasi sekolah dan membantu pelaksanaan
+            berbagai kegiatan. Pengalaman ini membangun rasa tanggung
+            jawab, kedisiplinan, kepemimpinan, dan kemampuan bekerja sama.
+        </p>
+    </div>
 </section>
 
-<!-- PROJECT -->
+<!-- PROJECTS & ACHIEVEMENTS -->
 <section id="project" class="fade">
-<h2>Projects</h2>
+    <h2 class="section-title">Projects & Achievements</h2>
 
-<div class="card">
-<img src="image copy 3.png">
-<h3>Business Plan Competition</h3>
-<p>Juara 2 Nasional dalam lomba Business Plan.</p>
-</div>
+    <div class="project-grid">
+        <div class="card">
+            <img src="image copy 3.png" alt="Business Plan Competition">
+            <h3>Business Plan Competition</h3>
+            <p>
+                Meraih Juara 2 dalam kompetisi Business Plan tingkat
+                nasional melalui pengembangan ide bisnis dan penyusunan
+                strategi usaha.
+            </p>
+        </div>
 
-<div class="card">
-<img src="image copy 4.png">
-<h3>Creative Marketing Video</h3>
-<p>Juara 2 lomba video kreatif pemasaran tingkat nasional.</p>
-</div>
+        <div class="card">
+            <img src="image copy 4.png" alt="Creative Marketing Video">
+            <h3>Creative Marketing Video</h3>
+            <p>
+                Meraih Juara 2 dalam kompetisi video pemasaran dengan
+                menggabungkan kreativitas, strategi komunikasi,
+                dan penyampaian pesan kepada audiens.
+            </p>
+        </div>
 
+        <div class="card">
+            <h3>Technology Projects</h3>
+            <p>
+                Mengembangkan ide dan proyek teknologi sebagai bagian
+                dari proses pembelajaran Teknik Informatika, termasuk
+                pengenalan pengembangan aplikasi dan perancangan solusi
+                digital.
+            </p>
+        </div>
+    </div>
 </section>
 
-<!-- SKILL -->
+<!-- SKILLS -->
 <section id="skill" class="fade">
-<h2>Skills</h2>
+    <h2 class="section-title">My Skills</h2>
 
-<div class="skill-bar">
-<span>Leadership</span>
-<div class="bar"><div class="progress" style="width:90%"></div></div>
-</div>
+    <div class="skills-grid">
+        <div class="card">
+            <h3>Leadership</h3>
+            <div class="skill-bar">
+                <span>Leadership & Initiative</span>
+                <div class="bar">
+                    <div class="progress" style="width: 85%"></div>
+                </div>
+            </div>
 
-<div class="skill-bar">
-<span>Public Speaking</span>
-<div class="bar"><div class="progress" style="width:85%"></div></div>
-</div>
+            <div class="skill-bar">
+                <span>Teamwork</span>
+                <div class="bar">
+                    <div class="progress" style="width: 90%"></div>
+                </div>
+            </div>
+        </div>
 
-<div class="skill-bar">
-<span>Event Management</span>
-<div class="bar"><div class="progress" style="width:80%"></div></div>
-</div>
+        <div class="card">
+            <h3>Communication</h3>
+            <div class="skill-bar">
+                <span>Public Speaking</span>
+                <div class="bar">
+                    <div class="progress" style="width: 80%"></div>
+                </div>
+            </div>
 
-<div class="skill-bar">
-<span>Creative Thinking</span>
-<div class="bar"><div class="progress" style="width:88%"></div></div>
-</div>
+            <div class="skill-bar">
+                <span>Communication</span>
+                <div class="bar">
+                    <div class="progress" style="width: 85%"></div>
+                </div>
+            </div>
+        </div>
 
-<div class="skill-bar">
-<span>Teamwork</span>
-<div class="bar"><div class="progress" style="width:92%"></div></div>
-</div>
+        <div class="card">
+            <h3>Creativity</h3>
+            <div class="skill-bar">
+                <span>Creative Thinking</span>
+                <div class="bar">
+                    <div class="progress" style="width: 85%"></div>
+                </div>
+            </div>
 
+            <div class="skill-bar">
+                <span>Content Creation</span>
+                <div class="bar">
+                    <div class="progress" style="width: 80%"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>Technology</h3>
+            <div class="skill-bar">
+                <span>HTML & CSS Fundamentals</span>
+                <div class="bar">
+                    <div class="progress" style="width: 60%"></div>
+                </div>
+            </div>
+
+            <div class="skill-bar">
+                <span>AI & Digital Tools</span>
+                <div class="bar">
+                    <div class="progress" style="width: 80%"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
-<!-- CERTIFICATE -->
+<!-- CERTIFICATES -->
 <section id="certificate" class="fade">
-<h2>Certificates</h2>
+    <h2 class="section-title">Certificates & Recognition</h2>
 
-<div class="cert-grid">
-<img src="image copy 5.png">
-<img src="image copy 6.png">
-<img src="22939cb4-87bd-4752-bef8-5ef0a89107df.jpg">
-<img src="50018de5-0e9d-4b3f-b645-69afc1403317.jpg">
-</div>
-
+    <div class="cert-grid">
+        <img src="image copy 5.png" alt="Sertifikat 1">
+        <img src="image copy 6.png" alt="Sertifikat 2">
+        <img src="22939cb4-87bd-4752-bef8-5ef0a89107df.jpg" alt="Sertifikat 3">
+        <img src="50018de5-0e9d-4b3f-b645-69afc1403317.jpg" alt="Sertifikat 4">
+    </div>
 </section>
 
 <!-- CONTACT -->
 <section id="contact" class="fade">
-<h2>Contact Me</h2>
+    <h2 class="section-title">Contact Me</h2>
 
-<div class="contact-box">
-<a href="#">Instagram: @crl.28_</a>
-<a href="#">LinkedIn: https://id.linkedin.com/in/caroline-aurellia-994909368</a>
-<a href="#">Email: alinvalencia123@gmail.com</a>
-</div>
+    <div class="contact-box">
+        <p>
+            Let's connect, collaborate, and create something meaningful!
+        </p>
 
+        <a href="https://www.instagram.com/crl.28_/" target="_blank" rel="noopener noreferrer">
+            Instagram: @crl.28_
+        </a>
+
+        <a href="https://www.linkedin.com/in/caroline-aurellia-994909368/" target="_blank" rel="noopener noreferrer">
+            LinkedIn: Caroline Aurellia
+        </a>
+
+        <a href="mailto:alinvalencia123@gmail.com">
+            Email: alinvalencia123@gmail.com
+        </a>
+    </div>
 </section>
 
+<!-- FOOTER -->
+<footer>
+    <p>© 2026 Caroline Aurellia | Designed with curiosity & creativity.</p>
+</footer>
+
 <script>
+/* STAR BACKGROUND */
+const canvas = document.getElementById("stars");
+const ctx = canvas.getContext("2d");
 
-/* STAR ANIMATION */
+let stars = [];
+let animationId;
 
-const canvas=document.getElementById("stars");
-const ctx=canvas.getContext("2d");
+function resizeCanvas() {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
 
-canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
+    canvas.width = window.innerWidth * dpr;
+    canvas.height = window.innerHeight * dpr;
 
-let stars=[];
+    canvas.style.width = window.innerWidth + "px";
+    canvas.style.height = window.innerHeight + "px";
 
-for(let i=0;i<200;i++){
-stars.push({
-x:Math.random()*canvas.width,
-y:Math.random()*canvas.height,
-r:Math.random()*2,
-d:Math.random()*1
-});
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    stars = [];
+
+    for (let i = 0; i < 150; i++) {
+        stars.push({
+            x: Math.random() * window.innerWidth,
+            y: Math.random() * window.innerHeight,
+            r: Math.random() * 1.5 + 0.3,
+            speed: Math.random() * 0.5 + 0.1,
+            opacity: Math.random() * 0.7 + 0.3
+        });
+    }
 }
 
-function drawStars(){
-ctx.clearRect(0,0,canvas.width,canvas.height);
-ctx.fillStyle="white";
-ctx.beginPath();
-for(let i=0;i<stars.length;i++){
-let s=stars[i];
-ctx.moveTo(s.x,s.y);
-ctx.arc(s.x,s.y,s.r,0,Math.PI*2,true);
-}
-ctx.fill();
-update();
-}
+function drawStars() {
+    ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
 
-function update(){
-for(let i=0;i<stars.length;i++){
-let s=stars[i];
-s.y+=s.d;
-if(s.y>canvas.height){
-s.y=0;
-}
-}
+    stars.forEach(star => {
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity})`;
+        ctx.fill();
+
+        star.y += star.speed;
+
+        if (star.y > window.innerHeight) {
+            star.y = 0;
+            star.x = Math.random() * window.innerWidth;
+        }
+    });
+
+    animationId = requestAnimationFrame(drawStars);
 }
 
-setInterval(drawStars,33);
+resizeCanvas();
+drawStars();
 
-/* FADE IN */
+window.addEventListener("resize", resizeCanvas);
 
-const faders=document.querySelectorAll('.fade');
-window.addEventListener('scroll',()=>{
-faders.forEach(el=>{
-const top=el.getBoundingClientRect().top;
-if(top<window.innerHeight-100){
-el.classList.add('show');
+/* FADE IN ON SCROLL */
+const faders = document.querySelectorAll(".fade");
+
+if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("show");
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1
+    });
+
+    faders.forEach(element => observer.observe(element));
+} else {
+    faders.forEach(element => element.classList.add("show"));
 }
-});
-});
-
-/* SCROLL BUTTON */
-
-function scrollToSection(id){
-document.getElementById(id).scrollIntoView({behavior:'smooth'});
-}
-
 </script>
 
 </body>
